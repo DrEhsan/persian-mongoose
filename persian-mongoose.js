@@ -10,8 +10,7 @@ const arbicAlphaToPersian = value => {
     return value;
 }
 
-
-const convertor = (schema, options) => {
+const AlphabetConvertor = (schema, options) => {
 
     schema.pre('save', function (next) {
 
@@ -24,15 +23,12 @@ const convertor = (schema, options) => {
                   this[field] = arbicAlphaToPersian(this[field])
               });
           }
-
-
         }
 
         next();
       });
-
 }
 
 module.exports = {
-    convertor
+    AlphabetConvertor
 }

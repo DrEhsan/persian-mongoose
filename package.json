@@ -1,15 +1,31 @@
 {
-  "name": "mongoose-persian",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "persian-mongoose",
+  "version": "0.1.0",
+  "description": "Persian localization and validation for mongoose",
+  "homepage": "https://github.com/DrEhsan/persian-mongoose",
+  "main": "persian-mongoose",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "ehsan.hesam13@gmail.com",
+  "author": "AmirHasan Hesam <ehsan.hesam13@gmail.com>",
+  "contributors": [
+    "AmirHasan Hesam (https://github.com/DrEhsan/)"
+  ],
   "license": "ISC",
   "dependencies": {
-    "mongoose": "^5.5.13",
-    "persianjs": "^0.4.0"
+    "mongoose": "^5.5.13"
+  },
+  "keywords": [
+    "persian",
+    "mongoose",
+    "culture",
+    "localization"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DrEhsan/persian-mongoose.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DrEhsan/persian-mongoose/issues"
   }
 }

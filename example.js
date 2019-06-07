@@ -1,4 +1,4 @@
-var persianMongoose = require('./persian-mongoose')
+var persianMongoose = require('persian-mongoose')
 
 var mongoose = require('mongoose');
 
@@ -8,7 +8,7 @@ var mySchema = new mongoose.Schema({
     name: {type: String}
 });
 
-mySchema.plugin(persianMongoose.convertor,
+mySchema.plugin(persianMongoose.AlphabetConvertor,
 {
     arbicAlphaToPersian:
     {
@@ -18,7 +18,7 @@ mySchema.plugin(persianMongoose.convertor,
 
 var myModel = mongoose.model('myModel', mySchema);
 
-var newName = new myModel({ name: 'علي' });
+var newName = new myModel({ name : 'علي' });
 
 newName.save(function (err) {
 
