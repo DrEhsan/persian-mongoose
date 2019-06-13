@@ -29,6 +29,12 @@ const AlphabetConvertor = (schema, options) => {
       });
 }
 
+function isMobile(value){
+    let regex = /^(((98)|(\+98)|(0098)|0)(90|91|92|93){1}[0-9]{8})+$/;
+    return regex.test(value)
+}
+
 module.exports = {
-    AlphabetConvertor
+    AlphabetConvertor,
+    isMobile
 }
