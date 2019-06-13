@@ -1,4 +1,4 @@
-var persianMongoose = require('./persian-mongoose')
+var persianMongoose = require('./../persian-mongoose')
 
 var mongoose = require('mongoose');
 
