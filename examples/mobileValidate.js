@@ -5,7 +5,6 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
 
 var mySchema = new mongoose.Schema({
-    name: {type: String},
     phone_number : {
       type : String,
       validate: [
@@ -24,7 +23,7 @@ mySchema.plugin(persianMongoose.AlphabetConvertor,
 
 var myModel = mongoose.model('myModel', mySchema);
 
-var newName = new myModel({ name : 'علي',  phone_number: '09368681234'});
+var newName = new myModel({phone_number: '09368681234'});
 
 newName.save(function (err) {
 
