@@ -7,7 +7,24 @@ persian localization and validation for mongoose schemas
 
 ``` npm install persian-mongoose```
 
-## Functions
+## Validation
+
+### isMobile - Iran Mobile Validation
+
+This function validates if the phone number is from iran or not
+
+```javascript
+var mySchema = new mongoose.Schema({
+    phone_number : {
+      type : String,
+      validate: [
+        { validator: persianMongoose.isMobile, msg: 'phone number is incorrect'}
+      ]
+    }
+});
+```
+
+## Convertors
 
 ### AlphabetConvertor
 This converts alphabet characters to persian
