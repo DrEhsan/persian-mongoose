@@ -13,14 +13,6 @@ var mySchema = new mongoose.Schema({
     }
 });
 
-mySchema.plugin(persianMongoose.AlphabetConvertor,
-{
-    arbicAlphaToPersian:
-    {
-        fields : ['name']
-    }
-});
-
 var myModel = mongoose.model('myModel', mySchema);
 
 var newName = new myModel({phone_number: '09368681234'});

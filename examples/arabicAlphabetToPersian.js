@@ -8,9 +8,9 @@ var mySchema = new mongoose.Schema({
     name: {type: String},
 });
 
-mySchema.plugin(persianMongoose.AlphabetConvertor,
+mySchema.plugin(persianMongoose.removeArabicChars,
 {
-    arbicAlphaToPersian:
+    removeArabicChars:
     {
         fields : ['name']
     }

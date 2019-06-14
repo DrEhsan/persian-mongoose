@@ -3,6 +3,8 @@ persian-mongoose
 
 persian localization and validation for mongoose schemas
 
+for persian validation we use [persianize](https://github.com/opencafe/persianize-node) as validators.
+
 ## Installation
 
 ``` npm install persian-mongoose```
