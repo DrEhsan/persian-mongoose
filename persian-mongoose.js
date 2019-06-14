@@ -1,40 +1,56 @@
+const persianize = require('persianize');
 
-const arbicAlphaToPersian = value => {
-    var arabicChars = ["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "ى"],
-        persianChars = ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "ی"];
-
-    for (var i = 0, charsLen = arabicChars.length; i < charsLen; i++) {
-        value = value.replace(new RegExp(arabicChars[i], "g"), persianChars[i]);
-    }
-
-    return value;
-}
-
-const AlphabetConvertor = (schema, options) => {
+const removeArabicChars = (schema, options) => {
 
     schema.pre('save', function (next) {
 
         if (options) {
 
-          if (options.arbicAlphaToPersian){
-              let fields = options.arbicAlphaToPersian.fields;
+          if (options.removeArabicChars){
+              let fields = options.removeArabicChars.fields;
 
               fields.forEach(field => {
-                  this[field] = arbicAlphaToPersian(this[field])
+                  this[field] = persianize.convert().removeArabicChar(this[field]).get();
               });
           }
+
         }
 
         next();
       });
 }
 
-function isMobile(value){
-    let regex = /^(((98)|(\+98)|(0098)|0)(90|91|92|93){1}[0-9]{8})+$/;
-    return regex.test(value)
+const isMobile = value => {
+    return persianize.validator().mobile(value);
 }
 
+const isCardNumber = value => {
+    return persianize.validator().cradNumber(value);
+}
+
+const isPhone = value => {
+    return persianize.validator().phone(value);
+}
+
+const isPostalCode = value => {
+    return persianize.validator().postalCode(value);
+}
+
+const isSheba = value => {
+    return persianize.validator().sheba(value);
+}
+
+const isMelliCode = value => {
+    return persianize.validator().meliCode(value);
+}
+
+
 module.exports = {
-    AlphabetConvertor,
-    isMobile
+    removeArabicChars,
+    isMobile,
+    isCardNumber,
+    isPhone,
+    isPostalCode,
+    isSheba,
+    isMelliCode
 }

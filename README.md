@@ -7,11 +7,20 @@ persian localization and validation for mongoose schemas
 
 ``` npm install persian-mongoose```
 
-## Validation
+## Persian Validation
 
-### isMobile - Iran Mobile Validation
+A set of validation for persian and Iran usages
 
-This function validates if the phone number is from iran or not
+| Function  | Description |
+| ------------- | ------------- |
+| isMobile      | check if string is following iran's mobile number formats   |
+| isCardNumber  | check if string is a real iran bank card number             |
+| isPhone       | check if string is iran's phone number format               |
+| isPostalCode  | check if string following iran's postal code's format       |
+| isSheba       | check if string is real sheba number                        |
+| isMelliCode   | check if string is real melli code                          |
+
+Example :
 
 ```javascript
 var mySchema = new mongoose.Schema({
@@ -26,22 +35,23 @@ var mySchema = new mongoose.Schema({
 
 ## Convertors
 
-### AlphabetConvertor
-This converts alphabet characters to persian
+### removeArabicChars
+This converts arabic alphabet characters to persian characters
 
-Example (convert arabic alphabet to persian) :
+Example (convert arabic chars to persian) :
+
 
 ```javascript
-Schema.plugin(persianMongoose.AlphabetConvertor,
+
+//Input : فارسي   -> Ouput : فارسی
+
+Schema.plugin(persianMongoose.removeArabicChars,
 {
-    arbicAlphaToPersian:
+    removeArabicChars:
     {
         fields : ['name']
     }
 });
-
-/* this will convert
-["ي", "ك", "‍", "دِ", "بِ", "زِ", "ذِ", "ِشِ", "ِسِ", "ى"] to ["ی", "ک", "", "د", "ب", "ز", "ذ", "ش", "س", "ی"]
 ```
 
 ## Complete Usage
@@ -52,9 +62,9 @@ var mySchema = new mongoose.Schema({
     name: {type: String}
 });
 
-mySchema.plugin(persianMongoose.AlphabetConvertor,
+mySchema.plugin(persianMongoose.removeArabicChars,
 {
-    arbicAlphaToPersian:
+    removeArabicChars:
     {
         fields : ['name']
     }
